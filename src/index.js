@@ -12,22 +12,23 @@ const classForNameOneCountry = 'titleForOneCountry';
 
 inputEl.addEventListener('input', debounce(handleOnInputEl, DEBOUNCE_DELAY))
 
-function handleOnInputEl(event) {
-    const valueOfInputEl = event.target.value.trim();
+async function handleOnInputEl(event) {
+  const valueOfInputEl = event.target.value.trim();
   if (valueOfInputEl === '') {
     countryListEl.innerHTML = '';
     countryInfo.innerHTML = '';
     inputEl.style.backgroundColor = '#fafafa';
-        return
-    }
-  return fetchCountries(valueOfInputEl)
-    .then(showOnScreen)
-    .catch(() => {
-       countryInfo.innerHTML = '';
+    return
+  }
+  try {
+    const dataOfCountries = await fetchCountries(valueOfInputEl);
+     return showOnScreen(dataOfCountries);
+  } catch (error) {
+    countryInfo.innerHTML = '';
     countryListEl.innerHTML = '';
-      inputEl.style.backgroundColor = 'rgb(241, 121, 121)';
-      Notiflix.Notify.failure('Oops, there is no country with that name');
-    })
+    inputEl.style.backgroundColor = 'rgb(241, 121, 121)';
+    Notiflix.Notify.failure('Oops, there is no country with that name');
+  }
 }
 
 function showOnScreen(arreyOfCountries) {
