@@ -26,7 +26,7 @@ function handleOnInputEl(event) {
        countryInfo.innerHTML = '';
     countryListEl.innerHTML = '';
       inputEl.style.backgroundColor = 'rgb(241, 121, 121)';
-       Notiflix.Notify.failure('Oops, there is no country with that name')
+      Notiflix.Notify.failure('Oops, there is no country with that name');
     })
 }
 
