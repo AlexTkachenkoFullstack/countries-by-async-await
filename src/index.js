@@ -44,7 +44,7 @@ function showOnScreen(arreyOfCountries) {
   else if (arreyOfCountries.length >= 2 && arreyOfCountries.length < 10) {
         makeMarkupCountriesList(arreyOfCountries)
         inputEl.style.backgroundColor = '#dceb5c';
-        countryInfo.innerHTML=''
+    countryInfo.innerHTML = '';
     }
 }
 
